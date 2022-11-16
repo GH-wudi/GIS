@@ -1,3 +1,7 @@
+*.history
+*.vs
+*.datasture
+
 # Prerequisites
 *.d
 
