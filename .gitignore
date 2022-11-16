@@ -1,6 +1,16 @@
 *.history
 *.vs
-*.datasture
+
+*.[sS]
+*.o
+*.swp
+*.vim
+*.tgz
+*.out
+*.class
+
+drafts/
+
 
 # Prerequisites
 *.d
