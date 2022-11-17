@@ -7,6 +7,14 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+void output(int a[], int l)
+{
+	for (int i = 0; i < l; i++)
+	{
+		printf("%d ", a[i]);
+	}
+}
+
 void swap(int* x, int* y)
 {
 	int temp = *x;
@@ -91,19 +99,21 @@ void merge(int a[], int low, int mid, int high)
 {
 	int* temp = (int *)malloc((high - low + 1) * sizeof(int));
 	int i = low, j = mid + 1, k = 0;
-	while (i <= mid && j <= high)
+	while (i <= mid && j <= high)//必须要有等于
 	{
-		if (a[i] < a[j])
+		if (a[i] < a[j])//可有等于可无等于
 			temp[k++] = a[i++];
 		else
 			temp[k++] = a[j++];
 	}
-	while (i <= mid)  temp[k++] = a[i++];
-	while (j <= high) temp[k++] = a[j++];
+	output(temp,(high - low + 1) * sizeof(int));
+	printf("\n");
+	while (i <= mid)  temp[k++] = a[i++];//必须要有等于
+	while (j <= high) temp[k++] = a[j++];//必须要有等于
 
-	for (int i = 0; i < k; i++)
+	for (i = 0; i < k; i++)
 	{
-		a[low + 1] = temp[i];
+		a[low + i] = temp[i];
 	}
 	free(temp);
 }
@@ -111,24 +121,18 @@ void merge(int a[], int low, int mid, int high)
 //对当前区间进行归并排序
 void mergeSort(int a[], int low, int high) {
 	if (low < high) {
-		int mid = low + high / 2;
+		int mid = (low + high) / 2;//括号没加出错
 		mergeSort(a, low, mid);
 		mergeSort(a, mid + 1, high);
 		merge(a, low, mid, high);
 	}
 }
 
-void output(int a[], int l)
-{
-	for (int i = 0; i < l; i++)
-	{
-		printf("%d ", a[i]);
-	}
-}
 
 int main()
 {
 	int num[] = { 49,38,65,97,76,13,27,49 };
+	// int num[] = {80,30,60,40,20,10,50,70};
 	int len = sizeof(num) / sizeof(*num);
 	printf("before:");
 	output(num, len);
