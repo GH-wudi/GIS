@@ -22,9 +22,9 @@ int main() {
     link *p=initLink();
     display(p);
    
-    // printf("在第4的位置插入元素5：\n");
-    // p=insertElem(p, 5, 4);
-    // display(p);
+    printf("在第4的位置插入元素5：\n");
+    p=insertElem(p, 5, 4);
+    display(p);
    
     // printf("删除元素3:\n");
     // p=delElem(p, 3);
