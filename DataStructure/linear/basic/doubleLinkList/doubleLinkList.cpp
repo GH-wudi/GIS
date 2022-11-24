@@ -1,5 +1,5 @@
 /**
- * C ÓïÑÔ: Ë«ÏòÁ´±í¼°Æä²Ù×÷
+ * C è¯­è¨€: åŒå‘é“¾è¡¨åŠå…¶æ“ä½œ
  *
  * @author wfh
  * @date 2022/11/20
@@ -19,7 +19,7 @@ void output(Node* L);
 
 void output(Node* L)
 {
-	Node* p = L;//ÓĞÍ·½áµã
+	Node* p = L;//æœ‰å¤´ç»“ç‚¹
 	while (p->next)
 	{
 		p = p->next;
@@ -70,12 +70,12 @@ Node* findElem(Node* L, int x)
 	return NULL;
 }
 
-int findDeleteElem(Node* L, int x)//&ÊÇ´íÎóµÄ£¬ÎªÊ²Ã´£¿
+int findDeleteElem(Node* L, int x)//&æ˜¯é”™è¯¯çš„ï¼Œä¸ºä»€ä¹ˆï¼Ÿ
 {
 	Node* p = L;
 	while (p->next != NULL)
 	{
-		//ÕâÖÖĞ´·¨È·Êµ²é²»µ½×îºóÒ»¸ö
+		//è¿™ç§å†™æ³•ç¡®å®æŸ¥ä¸åˆ°æœ€åä¸€ä¸ª
 		// p = p->next;
 		// if (p->data == x)
 		// 	break;
@@ -86,13 +86,18 @@ int findDeleteElem(Node* L, int x)//&ÊÇ´íÎóµÄ£¬ÎªÊ²Ã´£¿
 	}
 	if (p->next == NULL)
 		return 0;
+	else if (p->next->next == NULL)
+	{
+		p->next = NULL;
+		return 1;
+	}
 	else
 	{
-		Node* q = p->next;//ÉÏÊö´úÂëÓĞbreak£¬ËùÒÔÒª¸³ÖµÎªp->next
-		// p->next = q->next;
-		// q->next->prior = p;
-		p->next = p->next->next;
-		p->next->prior = p;
+		Node* q = p->next;//ä¸Šè¿°ä»£ç æœ‰breakï¼Œæ‰€ä»¥è¦èµ‹å€¼ä¸ºp->next
+		p->next = q->next;
+		q->next->prior = p;
+		// p->next = p->next->next;
+		// p->next->prior = p;
 		free(q);
 		return 1;
 	}
@@ -115,14 +120,14 @@ int main()
 {
 	int num[] = { 49,38,65,97,76,13,27,50 };
 	int len = sizeof(num) / sizeof(*num);
-	Node* L = NULL;//ÕâÊÇmainº¯ÊıÄÚ²¿µÄ¾Ö²¿±äÁ¿
-	// Node* p = L->next->next;//ÎªÊ²Ã´·ÅÔÚÕâÒ»ĞĞ²»ĞĞ ÒòÎª´ËÊ±µÄL->next=NULL
-	initList(L, num, len);//Ö¸ÕëÀàĞÍ²»ÓÃ¼Ó&
+	Node* L = NULL;//è¿™æ˜¯mainå‡½æ•°å†…éƒ¨çš„å±€éƒ¨å˜é‡
+	// Node* p = L->next->next;//ä¸ºä»€ä¹ˆæ”¾åœ¨è¿™ä¸€è¡Œä¸è¡Œ å› ä¸ºæ­¤æ—¶çš„L->next=NULL
+	initList(L, num, len);//æŒ‡é’ˆç±»å‹ä¸ç”¨åŠ &
 	printf("init:  ");
-	output(L);//ÉùÃ÷º¯Êı
+	output(L);//å£°æ˜å‡½æ•°
 
 	// printf("\n");
-	// Node* p = L->next->next;//·ÅÔÚÕâÒ»ĞĞ¿ÉÒÔ
+	// Node* p = L->next->next;//æ”¾åœ¨è¿™ä¸€è¡Œå¯ä»¥
 	// L = insertElem(L, p, 101);
 	// printf("insert:");
 	// output(L);
@@ -145,6 +150,6 @@ int main()
 	// output(L);
 
 	// Node* p = findElem(L, 27);
-	// printf("%d", p->data);//pÊÇNodeĞÍ£¬ÒªÓÃ->È¡Öµ
+	// printf("%d", p->data);//pæ˜¯Nodeå‹ï¼Œè¦ç”¨->å–å€¼
 	return 0;
 }

@@ -113,7 +113,7 @@ int modifyElem(Node* L, int index, int x)
 }
 int main()
 {
-	int num[] = { 49,38,65,97,76,13,27,49 };
+	int num[] = { 49,38,65,97,76,13,27,50 };
 	int len = sizeof(num) / sizeof(*num);
 	Node* L = NULL;//这是main函数内部的局部变量
 	initList(L, num, len);//指针类型不用加&
@@ -126,21 +126,21 @@ int main()
 	// output(L);
 
 	// printf("\n");
-	// int flag = findDeleteElem(L, 100);
-	// if (flag)
-	// 	printf("success!\n");
-	// else
-	// 	printf("fail!\n");
-	// printf("delete:");
-	// output(L);
-
-	int flag = modifyElem(L, 7, 100);
+	int flag = findDeleteElem(L, 50);
 	if (flag)
 		printf("success!\n");
 	else
 		printf("fail!\n");
-	printf("modified:");
+	printf("delete:");
 	output(L);
+
+	// int flag = modifyElem(L, 7, 100);
+	// if (flag)
+	// 	printf("success!\n");
+	// else
+	// 	printf("fail!\n");
+	// printf("modified:");
+	// output(L);
 
 	// Node* p = findElem(L, 102);
 	// printf("%d", p->data);//p是Node型，要用->取值
