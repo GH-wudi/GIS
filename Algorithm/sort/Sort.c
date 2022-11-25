@@ -29,9 +29,7 @@ void bubbleSort(int a[], int l)
 		for (int j = 0; j < l - 1 - i; j++)
 		{
 			if (a[j] > a[j + 1])
-			{
 				swap(&a[j], &a[j + 1]);
-			}
 		}
 	}
 }
@@ -137,11 +135,11 @@ int main()
 	printf("before:");
 	output(num, len);
 	printf("\n");
-	// bubbleSort(num, len);	  //len
+	bubbleSort(num, len);	  //len
 	// selectSort(num, len);      //len
 	// insertionSort(num, len);   //len
 	// QuickSort(num, 0, len - 1);//len-1
-	mergeSort(num, 0, len - 1);//len-1
+	// mergeSort(num, 0, len - 1);//len-1
 	printf("after :");
 	output(num, len);
 	return 0;
